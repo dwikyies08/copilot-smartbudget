@@ -1,35 +1,158 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-heading: var(--font-sans);
+    --font-sans: var(--font-sans);
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    
+    /* Radius sedikit membulat (0.75rem) untuk kesan modern dan ramah */
+    --radius-sm: calc(var(--radius) * 0.5);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.5);
+    --radius-2xl: calc(var(--radius) * 2);
+}
 
 :root {
-  --background: 222 47% 11%;
-  --foreground: 210 40% 98%;
-  --card: 222 47% 11%;
-  --card-foreground: 210 40% 98%;
-  --primary: 210 100% 66%;
-  --primary-foreground: 222 47% 11%;
-  --secondary: 217 33% 17%;
-  --secondary-foreground: 210 40% 98%;
-  --muted: 217 32% 17%;
-  --muted-foreground: 215 20% 65%;
-  --accent: 210 40% 96%;
-  --accent-foreground: 222 47% 11%;
-  --destructive: 0 62% 50%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 217 32% 17%;
-  --input: 217 32% 17%;
-  --ring: 213 94% 68%;
+    /* LIGHT MODE: Clean White & Medical Teal */
+    --background: oklch(1 0 0); /* Pure White */
+    --foreground: oklch(0.25 0.02 240); /* Cool Dark Slate (Teks lebih lembut dari hitam pekat) */
+    
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.25 0.02 240);
+    
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.25 0.02 240);
+    
+    /* Primary: Modern Teal (Biru Kehijauan) */
+    --primary: oklch(0.60 0.12 220); 
+    --primary-foreground: oklch(1 0 0); /* White text on primary buttons */
+    
+    /* Secondary/Muted: Sangat lembut untuk pemisah visual */
+    --secondary: oklch(0.96 0.01 240); 
+    --secondary-foreground: oklch(0.35 0.02 240);
+    
+    --muted: oklch(0.96 0.01 240);
+    --muted-foreground: oklch(0.55 0.02 240);
+    
+    --accent: oklch(0.96 0.01 240);
+    --accent-foreground: oklch(0.25 0.02 240);
+    
+    /* Destructive: Merah modern yang tidak terlalu mencolok */
+    --destructive: oklch(0.60 0.18 20);
+    
+    --border: oklch(0.92 0.01 240);
+    --input: oklch(0.92 0.01 240);
+    --ring: oklch(0.60 0.12 220); /* Ring fokus mengikuti warna primary */
+    
+    --radius: 0.75rem; /* Border radius sedikit lebih membulat ala aplikasi kekinian */
+    
+    /* Chart Colors (Disesuaikan agar senada) */
+    --chart-1: oklch(0.60 0.12 220);
+    --chart-2: oklch(0.70 0.10 200);
+    --chart-3: oklch(0.40 0.08 240);
+    --chart-4: oklch(0.80 0.12 180);
+    --chart-5: oklch(0.85 0.05 220);
+    
+    /* Sidebar Styling */
+    --sidebar: oklch(0.98 0.01 240); /* Sedikit off-white agar beda dari konten utama */
+    --sidebar-foreground: oklch(0.35 0.02 240);
+    --sidebar-primary: oklch(0.60 0.12 220);
+    --sidebar-primary-foreground: oklch(1 0 0);
+    --sidebar-accent: oklch(0.94 0.01 240);
+    --sidebar-accent-foreground: oklch(0.25 0.02 240);
+    --sidebar-border: oklch(0.92 0.01 240);
+    --sidebar-ring: oklch(0.60 0.12 220);
 }
 
-* {
-  @apply border-slate-800;
+.dark {
+    /* DARK MODE: Deep Cool Slate & Bright Teal */
+    --background: oklch(0.18 0.02 240); /* Deep cool slate (bukan hitam pekat, lebih elegan) */
+    --foreground: oklch(0.98 0.01 240); /* Off-white yang nyaman di mata */
+    
+    --card: oklch(0.22 0.02 240); /* Sedikit lebih terang dari background */
+    --card-foreground: oklch(0.98 0.01 240);
+    
+    --popover: oklch(0.22 0.02 240);
+    --popover-foreground: oklch(0.98 0.01 240);
+    
+    /* Primary: Teal yang sedikit lebih cerah untuk kontras di dark mode */
+    --primary: oklch(0.65 0.14 220); 
+    --primary-foreground: oklch(1 0 0);
+    
+    --secondary: oklch(0.28 0.02 240);
+    --secondary-foreground: oklch(0.98 0.01 240);
+    
+    --muted: oklch(0.28 0.02 240);
+    --muted-foreground: oklch(0.70 0.02 240);
+    
+    --accent: oklch(0.28 0.02 240);
+    --accent-foreground: oklch(0.98 0.01 240);
+    
+    --destructive: oklch(0.65 0.20 20);
+    
+    --border: oklch(0.35 0.02 240);
+    --input: oklch(0.35 0.02 240);
+    --ring: oklch(0.65 0.14 220);
+    
+    --chart-1: oklch(0.65 0.14 220);
+    --chart-2: oklch(0.75 0.12 200);
+    --chart-3: oklch(0.50 0.10 240);
+    --chart-4: oklch(0.85 0.14 180);
+    --chart-5: oklch(0.35 0.05 220);
+    
+    --sidebar: oklch(0.15 0.02 240); /* Sidebar lebih gelap dari background utama di dark mode */
+    --sidebar-foreground: oklch(0.85 0.02 240);
+    --sidebar-primary: oklch(0.65 0.14 220);
+    --sidebar-primary-foreground: oklch(1 0 0);
+    --sidebar-accent: oklch(0.22 0.02 240);
+    --sidebar-accent-foreground: oklch(0.98 0.01 240);
+    --sidebar-border: oklch(0.28 0.02 240);
+    --sidebar-ring: oklch(0.65 0.14 220);
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  @apply bg-slate-950 text-slate-50;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+  html {
+    @apply font-sans;
+    }
 }
