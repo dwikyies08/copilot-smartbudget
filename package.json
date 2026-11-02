@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "agent:create-feature": "bash ./scripts/agent/create-feature.sh",
+    "agent:check-arch": "bash ./scripts/agent/check-architecture.sh"
   },
   "dependencies": {
     "@libsql/client": "^0.15.0",
@@ -18,20 +20,20 @@
     "clsx": "^2.1.21",
     "drizzle-orm": "^0.36.4",
     "lucide-react": "^0.468.0",
-    "next": "14.2.15",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "next": "^16.4.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "tailwind-merge": "^3.0.0",
     "zod": "^3.24.2"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
     "autoprefixer": "^10.4.20",
     "drizzle-kit": "^0.24.2",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "14.2.15",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^16.4.0",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.2"

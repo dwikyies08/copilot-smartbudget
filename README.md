@@ -1,14 +1,23 @@
 # SmartBudget
 
-SmartBudget is a personal finance dashboard built with Next.js, Tailwind CSS, shadcn/ui, Turso, and Drizzle ORM.
+SmartBudget is a personal finance dashboard built with Next.js App Router, Tailwind CSS, shadcn/ui, Turso, and Drizzle ORM.
 
-## Stack
-- Next.js App Router
+## Tech stack
+- Next.js 16.4
+- React 19
 - TypeScript
 - Tailwind CSS
 - shadcn/ui
 - Turso DB
 - Drizzle ORM
+
+## Architecture
+- `app/` for routes and entry points
+- `actions/` for server actions
+- `services/` for business logic and database access
+- `components/` for UI
+- `db/` for schema and connection
+- `lib/` for helpers and utilities
 
 ## Setup
 
@@ -18,32 +27,32 @@ SmartBudget is a personal finance dashboard built with Next.js, Tailwind CSS, sh
 npm install
 ```
 
-2. Copy environment variables:
+2. Copy environment config:
 
 ```bash
 cp .env.example .env.local
 ```
 
-3. Configure your Turso credentials in `.env.local`.
+3. Fill the Turso credentials in `.env.local`.
 
-4. Run the app:
-
-```bash
-npm run dev
-```
-
-5. Push schema to Turso:
+4. Push the schema to Turso:
 
 ```bash
 npm run db:push
 ```
 
-## Features
-- Dashboard overview
-- Income and expense tracking
-- Recent transactions list
-- Add transaction form
-- Ready for expansion with budgets, reports, and auth
+5. Run the app:
+
+```bash
+npm run dev
+```
+
+## Development workflow
+
+```bash
+npm run agent:create-feature
+npm run agent:check-arch
+```
 
 ## Notes
-This project is intentionally scaffolded as a starting point for a full SmartBudget app and can be extended with authentication, budget planning, and analytics.
+The project is structured to keep UI, server actions, and business logic separated for easier scaling and maintenance.

@@ -7,16 +7,6 @@ export const categories = sqliteTable("categories", {
   createdAt: integer("created_at", { mode: "timestamp" }).notNull().defaultNow(),
 });
 
-export const budgets = sqliteTable("budgets", {
-  id: text("id").primaryKey(),
-  categoryId: text("category_id")
-    .notNull()
-    .references(() => categories.id),
-  amount: real("amount").notNull(),
-  month: text("month").notNull(),
-  createdAt: integer("created_at", { mode: "timestamp" }).notNull().defaultNow(),
-});
-
 export const transactions = sqliteTable("transactions", {
   id: text("id").primaryKey(),
   title: text("title").notNull(),
@@ -27,5 +17,15 @@ export const transactions = sqliteTable("transactions", {
     .references(() => categories.id),
   note: text("note"),
   date: integer("date", { mode: "timestamp" }).notNull(),
+  createdAt: integer("created_at", { mode: "timestamp" }).notNull().defaultNow(),
+});
+
+export const budgets = sqliteTable("budgets", {
+  id: text("id").primaryKey(),
+  categoryId: text("category_id")
+    .notNull()
+    .references(() => categories.id),
+  amount: real("amount").notNull(),
+  month: text("month").notNull(),
   createdAt: integer("created_at", { mode: "timestamp" }).notNull().defaultNow(),
 });
