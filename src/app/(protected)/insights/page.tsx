@@ -86,8 +86,8 @@ export default async function InsightsPage({
     productName: p.productName,
     averagePrice: p.averagePrice ?? 0,
     predictedNextPrice: p.predictedNextPrice ?? 0,
-    priceChangePercent: p.priceChangePercent,
-    isPriceRising: p.isPriceRising,
+    priceChangePercent: p.priceChangePercent ?? 0,
+    isPriceRising: p.isPriceRising ?? false,
     recommendedQuantity: p.recommendedQuantity ?? 1,
     updatedAt: p.updatedAt ? new Date(p.updatedAt).toISOString() : null,
   }))

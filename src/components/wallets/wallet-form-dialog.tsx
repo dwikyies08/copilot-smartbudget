@@ -38,9 +38,9 @@ export function WalletFormDialog({ wallet, trigger }: WalletFormDialogProps) {
     wallet?.balance ?? 0
   )
   const [currency, setCurrency] = React.useState(wallet?.currency ?? "IDR")
-  const [fieldErrors, setFieldErrors] = React.useState<Record<string, string[]>>(
-    {}
-  )
+  const [fieldErrors, setFieldErrors] = React.useState<
+    Record<string, string[] | undefined>
+  >({})
 
   React.useEffect(() => {
     if (open) {

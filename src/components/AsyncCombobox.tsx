@@ -66,9 +66,9 @@ export function AsyncCombobox({
     }
   }
 
-  const handleSelect = (selectedValue: string) => {
+  const handleSelect = (selectedValue: string | null) => {
     // 1. Kirim ID yang dipilih ke form (parent)
-    onChange(selectedValue)
+    onChange(selectedValue ?? "")
 
     // 2. Cari data pasien yang dipilih dari daftar items saat ini
     if (selectedValue) {

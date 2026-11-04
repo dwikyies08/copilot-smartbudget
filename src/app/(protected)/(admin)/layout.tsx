@@ -1,7 +1,11 @@
 import { auth } from "@/auth" // Sesuaikan path auth Anda
 import { redirect } from "next/navigation"
 
-export default async function AdminLayout({ children }) {
+export default async function AdminLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   const session = await auth()
 
   // 1. Cek apakah user sudah login

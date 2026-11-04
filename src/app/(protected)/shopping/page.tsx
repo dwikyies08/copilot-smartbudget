@@ -77,7 +77,7 @@ export default async function ShoppingPage({
     ])
 
   const activeSession = activeSessionRes.data ?? null
-  const wallets = walletsRes.data ?? []
+  const wallets = walletsRes.data?.wallets ?? []
   const categories = categoriesRes.data ?? []
 
   const safeRows: ShoppingTemplateRow[] = rows.map((t) => ({

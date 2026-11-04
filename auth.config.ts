@@ -1,5 +1,5 @@
 // auth.config.ts
-// Hapus baris import NextAuthConfig jika itu yang bikin error
+import type { NextAuthConfig } from "next-auth";
 
 export const authConfig = {
   pages: {
@@ -17,4 +17,4 @@ export const authConfig = {
     },
   },
   providers: [], 
-}; // Tidak perlu 'satisfies NextAuthConfig' jika error terus
+} satisfies NextAuthConfig;

@@ -284,21 +284,23 @@ export function ShoppingTableClient({
       <DataTable
         columns={columns}
         data={rows}
+        state={{
+          pagination,
+          sorting,
+          columnFilters,
+          globalFilter,
+        }}
+        handlers={{
+          onPaginationChange: handlePaginationChange,
+          onSortingChange: handleSortingChange,
+          onColumnFiltersChange: setColumnFilters,
+          onGlobalFilterChange: handleGlobalFilterChange,
+        }}
         mode="server"
         rowCount={rowCount}
         pageCount={pageCount}
-        pagination={pagination}
-        onPaginationChange={handlePaginationChange}
-        sorting={sorting}
-        onSortingChange={handleSortingChange}
-        columnFilters={columnFilters}
-        onColumnFiltersChange={setColumnFilters}
-        globalFilter={globalFilter}
-        onGlobalFilterChange={handleGlobalFilterChange}
-        globalSearch={{
-          placeholder: "Cari nama template belanja...",
-        }}
-        getRowId={(r) => r.id}
+        searchPlaceholder="Cari nama template belanja..."
+        emptyText="Belum ada template belanja terdaftar"
       />
 
       <Dialog
