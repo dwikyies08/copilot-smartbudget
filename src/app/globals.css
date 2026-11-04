@@ -3,118 +3,260 @@
 @tailwind utilities;
 
 :root {
-    --spacing: 0.25rem;
-    --radius-sm: calc(var(--radius) * 0.5);
-    --radius-md: calc(var(--radius) * 0.8);
-    --radius-lg: var(--radius);
-    --radius-xl: calc(var(--radius) * 1.5);
-    --radius-2xl: calc(var(--radius) * 2);
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --spacing: 0.25rem;
+  --radius: 0.875rem;
+  --radius-sm: calc(var(--radius) * 0.55);
+  --radius-md: calc(var(--radius) * 0.75);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.35);
+  --radius-2xl: calc(var(--radius) * 1.75);
 
-    /* LIGHT MODE: Clean White & Medical Teal */
-    --background: oklch(1 0 0); /* Pure White */
-    --foreground: oklch(0.25 0.02 240); /* Cool Dark Slate (Teks lebih lembut dari hitam pekat) */
-    
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.25 0.02 240);
-    
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.25 0.02 240);
-    
-    /* Primary: Modern Teal (Biru Kehijauan) */
-    --primary: oklch(0.60 0.12 220); 
-    --primary-foreground: oklch(1 0 0); /* White text on primary buttons */
-    
-    /* Secondary/Muted: Sangat lembut untuk pemisah visual */
-    --secondary: oklch(0.96 0.01 240); 
-    --secondary-foreground: oklch(0.35 0.02 240);
-    
-    --muted: oklch(0.96 0.01 240);
-    --muted-foreground: oklch(0.55 0.02 240);
-    
-    --accent: oklch(0.96 0.01 240);
-    --accent-foreground: oklch(0.25 0.02 240);
-    
-    /* Destructive: Merah modern yang tidak terlalu mencolok */
-    --destructive: oklch(0.60 0.18 20);
-    
-    --border: oklch(0.92 0.01 240);
-    --input: oklch(0.92 0.01 240);
-    --ring: oklch(0.60 0.12 220); /* Ring fokus mengikuti warna primary */
-    
-    --radius: 0.75rem; /* Border radius sedikit lebih membulat ala aplikasi kekinian */
-    
-    /* Chart Colors (Disesuaikan agar senada) */
-    --chart-1: oklch(0.60 0.12 220);
-    --chart-2: oklch(0.70 0.10 200);
-    --chart-3: oklch(0.40 0.08 240);
-    --chart-4: oklch(0.80 0.12 180);
-    --chart-5: oklch(0.85 0.05 220);
-    
-    /* Sidebar Styling */
-    --sidebar: oklch(0.98 0.01 240); /* Sedikit off-white agar beda dari konten utama */
-    --sidebar-foreground: oklch(0.35 0.02 240);
-    --sidebar-primary: oklch(0.60 0.12 220);
-    --sidebar-primary-foreground: oklch(1 0 0);
-    --sidebar-accent: oklch(0.94 0.01 240);
-    --sidebar-accent-foreground: oklch(0.25 0.02 240);
-    --sidebar-border: oklch(0.92 0.01 240);
-    --sidebar-ring: oklch(0.60 0.12 220);
+  /* =========================================================
+   * LIGHT MODE — SmartBudget Modern Minimalist & Glass Essence
+   * ========================================================= */
+  --background: oklch(0.985 0.006 245);
+  --foreground: oklch(0.21 0.025 250);
+
+  /* Translucent-friendly card & popover surfaces */
+  --card: oklch(1 0 0 / 0.82);
+  --card-foreground: oklch(0.21 0.025 250);
+
+  --popover: oklch(0.995 0.004 245 / 0.94);
+  --popover-foreground: oklch(0.21 0.025 250);
+
+  /* Brand Primary: Vibrant Emerald-Teal (FinTech Growth) */
+  --primary: oklch(0.58 0.16 172);
+  --primary-foreground: oklch(0.99 0.005 172);
+
+  /* Secondary & Muted: Soft Cool Pearl */
+  --secondary: oklch(0.955 0.012 245);
+  --secondary-foreground: oklch(0.28 0.025 250);
+
+  --muted: oklch(0.955 0.01 245);
+  --muted-foreground: oklch(0.52 0.025 250);
+
+  /* Accent: Subtle Mint-Cyan highlight */
+  --accent: oklch(0.945 0.025 180);
+  --accent-foreground: oklch(0.24 0.04 180);
+
+  /* Destructive / Expense Alert: Coral Rose */
+  --destructive: oklch(0.61 0.2 22);
+  --destructive-foreground: oklch(0.99 0.005 20);
+
+  /* Borders, Inputs & Focus Ring */
+  --border: oklch(0.90 0.014 245 / 0.85);
+  --input: oklch(0.91 0.014 245);
+  --ring: oklch(0.58 0.16 172);
+
+  /* Semantic Financial Colors */
+  --income: oklch(0.60 0.17 158);
+  --expense: oklch(0.61 0.20 22);
+  --warning: oklch(0.75 0.16 75);
+  --info: oklch(0.60 0.17 255);
+
+  /* Colorful Multi-Hue Chart Palette */
+  --chart-1: oklch(0.60 0.17 162); /* Emerald: Income / Cash In */
+  --chart-2: oklch(0.60 0.18 272); /* Indigo-Violet: Investments / Savings */
+  --chart-3: oklch(0.63 0.19 22);  /* Rose-Coral: Expense / Cash Out */
+  --chart-4: oklch(0.76 0.16 78);  /* Amber-Gold: Shopping / Budget Limit */
+  --chart-5: oklch(0.65 0.15 222); /* Sky-Cyan: Wallets / Net Worth */
+
+  /* Glass Essence Tokens (Light) */
+  --glass-bg: oklch(1 0 0 / 0.72);
+  --glass-bg-subtle: oklch(1 0 0 / 0.52);
+  --glass-border: oklch(1 0 0 / 0.65);
+  --glass-ring: oklch(0.21 0.025 250 / 0.07);
+  --glass-shadow: 0 8px 30px -6px oklch(0.21 0.03 250 / 0.06),
+    0 2px 6px -1px oklch(0.21 0.03 250 / 0.04);
+
+  /* Ambient Mesh Glows (Light) */
+  --mesh-1: oklch(0.88 0.08 172 / 0.32);
+  --mesh-2: oklch(0.89 0.07 265 / 0.24);
+  --mesh-3: oklch(0.92 0.06 85 / 0.18);
+
+  /* Sidebar */
+  --sidebar: oklch(0.98 0.008 245 / 0.85);
+  --sidebar-foreground: oklch(0.30 0.025 250);
+  --sidebar-primary: oklch(0.58 0.16 172);
+  --sidebar-primary-foreground: oklch(0.99 0.005 172);
+  --sidebar-accent: oklch(0.94 0.02 180);
+  --sidebar-accent-foreground: oklch(0.22 0.03 180);
+  --sidebar-border: oklch(0.91 0.012 245 / 0.8);
+  --sidebar-ring: oklch(0.58 0.16 172);
 }
 
 .dark {
-    /* DARK MODE: Deep Cool Slate & Bright Teal */
-    --background: oklch(0.18 0.02 240); /* Deep cool slate (bukan hitam pekat, lebih elegan) */
-    --foreground: oklch(0.98 0.01 240); /* Off-white yang nyaman di mata */
-    
-    --card: oklch(0.22 0.02 240); /* Sedikit lebih terang dari background */
-    --card-foreground: oklch(0.98 0.01 240);
-    
-    --popover: oklch(0.22 0.02 240);
-    --popover-foreground: oklch(0.98 0.01 240);
-    
-    /* Primary: Teal yang sedikit lebih cerah untuk kontras di dark mode */
-    --primary: oklch(0.65 0.14 220); 
-    --primary-foreground: oklch(1 0 0);
-    
-    --secondary: oklch(0.28 0.02 240);
-    --secondary-foreground: oklch(0.98 0.01 240);
-    
-    --muted: oklch(0.28 0.02 240);
-    --muted-foreground: oklch(0.70 0.02 240);
-    
-    --accent: oklch(0.28 0.02 240);
-    --accent-foreground: oklch(0.98 0.01 240);
-    
-    --destructive: oklch(0.65 0.20 20);
-    
-    --border: oklch(0.35 0.02 240);
-    --input: oklch(0.35 0.02 240);
-    --ring: oklch(0.65 0.14 220);
-    
-    --chart-1: oklch(0.65 0.14 220);
-    --chart-2: oklch(0.75 0.12 200);
-    --chart-3: oklch(0.50 0.10 240);
-    --chart-4: oklch(0.85 0.14 180);
-    --chart-5: oklch(0.35 0.05 220);
-    
-    --sidebar: oklch(0.15 0.02 240); /* Sidebar lebih gelap dari background utama di dark mode */
-    --sidebar-foreground: oklch(0.85 0.02 240);
-    --sidebar-primary: oklch(0.65 0.14 220);
-    --sidebar-primary-foreground: oklch(1 0 0);
-    --sidebar-accent: oklch(0.22 0.02 240);
-    --sidebar-accent-foreground: oklch(0.98 0.01 240);
-    --sidebar-border: oklch(0.28 0.02 240);
-    --sidebar-ring: oklch(0.65 0.14 220);
+  /* =========================================================
+   * DARK MODE — Deep Obsidian Slate & Luminous Neon-Pastel Glass
+   * ========================================================= */
+  --background: oklch(0.155 0.02 252);
+  --foreground: oklch(0.965 0.008 245);
+
+  --card: oklch(0.205 0.024 252 / 0.72);
+  --card-foreground: oklch(0.965 0.008 245);
+
+  --popover: oklch(0.215 0.025 252 / 0.92);
+  --popover-foreground: oklch(0.965 0.008 245);
+
+  /* Brand Primary: Luminous Mint-Emerald */
+  --primary: oklch(0.70 0.16 168);
+  --primary-foreground: oklch(0.15 0.03 170);
+
+  --secondary: oklch(0.245 0.025 252);
+  --secondary-foreground: oklch(0.95 0.01 245);
+
+  --muted: oklch(0.235 0.022 252);
+  --muted-foreground: oklch(0.68 0.02 245);
+
+  --accent: oklch(0.26 0.035 190);
+  --accent-foreground: oklch(0.96 0.01 180);
+
+  --destructive: oklch(0.66 0.20 22);
+  --destructive-foreground: oklch(0.99 0.005 20);
+
+  --border: oklch(0.32 0.025 252 / 0.65);
+  --input: oklch(0.28 0.025 252);
+  --ring: oklch(0.70 0.16 168);
+
+  /* Semantic Financial Colors (Dark) */
+  --income: oklch(0.72 0.17 158);
+  --expense: oklch(0.68 0.20 22);
+  --warning: oklch(0.80 0.16 78);
+  --info: oklch(0.70 0.16 250);
+
+  /* Colorful Multi-Hue Chart Palette (Dark) */
+  --chart-1: oklch(0.72 0.17 162); /* Emerald */
+  --chart-2: oklch(0.70 0.18 275); /* Indigo-Violet */
+  --chart-3: oklch(0.68 0.20 22);  /* Rose-Coral */
+  --chart-4: oklch(0.80 0.16 78);  /* Amber-Gold */
+  --chart-5: oklch(0.74 0.15 220); /* Sky-Cyan */
+
+  /* Glass Essence Tokens (Dark) */
+  --glass-bg: oklch(0.21 0.025 252 / 0.65);
+  --glass-bg-subtle: oklch(0.21 0.025 252 / 0.42);
+  --glass-border: oklch(1 0 0 / 0.09);
+  --glass-ring: oklch(1 0 0 / 0.08);
+  --glass-shadow: 0 10px 32px -8px oklch(0.05 0.02 252 / 0.55),
+    0 2px 8px -2px oklch(0.05 0.02 252 / 0.35);
+
+  /* Ambient Mesh Glows (Dark) */
+  --mesh-1: oklch(0.35 0.11 170 / 0.22);
+  --mesh-2: oklch(0.32 0.12 275 / 0.18);
+  --mesh-3: oklch(0.34 0.10 215 / 0.14);
+
+  /* Sidebar */
+  --sidebar: oklch(0.14 0.02 252 / 0.85);
+  --sidebar-foreground: oklch(0.88 0.015 245);
+  --sidebar-primary: oklch(0.70 0.16 168);
+  --sidebar-primary-foreground: oklch(0.15 0.03 170);
+  --sidebar-accent: oklch(0.22 0.028 252);
+  --sidebar-accent-foreground: oklch(0.97 0.01 245);
+  --sidebar-border: oklch(0.26 0.022 252 / 0.75);
+  --sidebar-ring: oklch(0.70 0.16 168);
 }
 
 @layer base {
   * {
     @apply border-border;
   }
+
+  html {
+    @apply font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
   body {
     @apply bg-background text-foreground;
+    background-image:
+      radial-gradient(at 0% 0%, var(--mesh-1) 0px, transparent 52%),
+      radial-gradient(at 100% 0%, var(--mesh-2) 0px, transparent 48%),
+      radial-gradient(at 50% 100%, var(--mesh-3) 0px, transparent 55%);
+    background-attachment: fixed;
   }
-  html {
-    @apply font-sans;
+
+  /* Default minimalist glass essence on standard Card slots */
+  [data-slot="card"] {
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--glass-shadow);
+    border: 1px solid var(--glass-border);
+  }
+}
+
+@layer components {
+  /* =========================================================
+   * SIMPLE GLASS ESSENCE PRIMITIVES (Safe for Low Models)
+   * ========================================================= */
+
+  /* Standard glass card for containers, dialogs, and widgets */
+  .glass-card {
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    @apply rounded-xl transition-all duration-200;
+  }
+
+  /* Subtle glass for nested rows, list items, or secondary panels (no double blur) */
+  .glass-subtle {
+    background-color: var(--glass-bg-subtle);
+    border: 1px solid var(--border);
+    @apply rounded-lg transition-colors duration-150;
+  }
+
+  /* Sticky top header / toolbar glass */
+  .glass-header {
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* =========================================================
+   * COLORFUL FINTECH ACCENT SURFACES (KPI & Summary Cards)
+   * ========================================================= */
+
+  .surface-emerald {
+    @apply border-emerald-500/20 bg-gradient-to-br from-emerald-500/10 via-emerald-500/5 to-transparent;
+  }
+
+  .surface-rose {
+    @apply border-rose-500/20 bg-gradient-to-br from-rose-500/10 via-rose-500/5 to-transparent;
+  }
+
+  .surface-indigo {
+    @apply border-indigo-500/20 bg-gradient-to-br from-indigo-500/10 via-indigo-500/5 to-transparent;
+  }
+
+  .surface-amber {
+    @apply border-amber-500/20 bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-transparent;
+  }
+
+  .surface-sky {
+    @apply border-sky-500/20 bg-gradient-to-br from-sky-500/10 via-sky-500/5 to-transparent;
+  }
+
+  /* =========================================================
+   * TYPOGRAPHY & CURRENCY HELPERS
+   * ========================================================= */
+
+  .text-gradient-brand {
+    @apply bg-gradient-to-r from-emerald-500 via-teal-500 to-sky-500 bg-clip-text text-transparent dark:from-emerald-400 dark:via-teal-300 dark:to-sky-400;
+  }
+
+  .amount-income {
+    @apply font-mono font-semibold tabular-nums text-emerald-600 dark:text-emerald-400;
+  }
+
+  .amount-expense {
+    @apply font-mono font-semibold tabular-nums text-rose-600 dark:text-rose-400;
+  }
+
+  .amount-neutral {
+    @apply font-mono font-semibold tabular-nums text-foreground;
   }
 }

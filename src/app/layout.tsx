@@ -1,4 +1,3 @@
-import { Geist_Mono, Inter } from "next/font/google"
 import type { Metadata, Viewport } from "next"
 
 import "./globals.css"
@@ -7,16 +6,12 @@ import { cn } from "@/lib/utils"
 import { Toaster } from "sonner"
 import { GlobalConfirmDialog } from "@/components/global-confirm-dialog"
 
-// Setup Font Modern (Inter untuk UI umum, Geist Mono untuk data/angka)
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
-const fontMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" })
-
-// --- KONFIGURASI METADATA KLINIK ---
-const appName = process.env.NEXT_PUBLIC_APP_NAME || "Praktik dr. Indra Addinar"
+// --- KONFIGURASI METADATA SMART BUDGET ---
+const appName = process.env.NEXT_PUBLIC_APP_NAME || "SmartBudget"
 const appDescription =
-  "Sistem Informasi Manajemen dan Rekam Medis Elektronik (RME) modern untuk Praktik Mandiri dr. Indra Addinar. Melayani dengan sepenuh hati."
+  "Aplikasi manajemen keuangan pribadi, pemantauan anggaran kategori, daftar belanja pintar, dan analisis arus kas modern."
 const appUrl =
-  process.env.NEXT_PUBLIC_APP_URL || "https://klinik-dr-indra.vercel.app"
+  process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"
 
 export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
@@ -92,9 +87,7 @@ export default function RootLayout({
       lang="id" // Mengubah ke bahasa Indonesia
       suppressHydrationWarning
       className={cn(
-        "min-h-screen scroll-smooth bg-background text-foreground antialiased",
-        fontMono.variable,
-        inter.variable
+        "min-h-screen scroll-smooth bg-background text-foreground antialiased"
       )}
     >
       <body className="flex min-h-screen flex-col">

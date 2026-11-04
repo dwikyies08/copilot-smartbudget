@@ -35,6 +35,10 @@ const config: Config = {
           DEFAULT: "var(--destructive)",
           foreground: "var(--destructive-foreground)",
         },
+        income: "var(--income)",
+        expense: "var(--expense)",
+        warning: "var(--warning)",
+        info: "var(--info)",
         popover: {
           DEFAULT: "var(--popover)",
           foreground: "var(--popover-foreground)",
